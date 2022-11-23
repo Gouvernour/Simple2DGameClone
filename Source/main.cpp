@@ -29,7 +29,6 @@
 int main(void)
 {
     // Initialization
-    // //hello
     //--------------------------------------------------------------------------------------
     const int screenWidth = 800;
     const int screenHeight = 450;
@@ -51,7 +50,7 @@ int main(void)
         //----------------------------------------------------------------------------------
         BeginDrawing();
 
-        ClearBackground(SKYBLUE);
+        ClearBackground(RAYWHITE);
 
         DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
 
