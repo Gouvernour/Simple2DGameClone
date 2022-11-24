@@ -1,2 +1,2 @@
 ﻿  main.cpp
-  raylib_template.vcxproj -> C:\Users\ottor\OneDrive\Documents\GitHub\Simple2DGameClone\Build\Debug\raylib_template.exe
+LINK : fatal error LNK1104: cannot open file 'raylib.lib'
