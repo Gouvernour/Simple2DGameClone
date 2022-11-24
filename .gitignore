@@ -314,3 +314,11 @@ FodyWeavers.xsd
 *.msp
 # JetBrains Rider
 *.sln.iml
+*.log
+.vs/raylib_template/v17/.suo
+*.db
+*.ilk
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
