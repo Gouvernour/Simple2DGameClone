@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.31.31103:TargetPlatformVersion=10.0.22000.0:
 Debug|x64|C:\Game_Projects\A.I.T.A.C\Simple2DGameClone\|
+=======
+PlatformToolSet=v143:VCToolArchitecture=Native64Bit:VCToolsVersion=14.32.31326:TargetPlatformVersion=10.0.22621.0:
+Debug|x64|C:\Users\Hugo.L\Desktop\c++3\|
+>>>>>>> Fabian
