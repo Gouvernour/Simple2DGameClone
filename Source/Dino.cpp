@@ -49,6 +49,11 @@ Vector2 Dino::GetPosition()
 	return Vector2();
 }
 
+Vector2 Dino::GetSize()
+{
+	return Size;
+}
+
 void Dino::Draw()
 {
 	DrawRectangleV(Position, Size, RED);
@@ -114,4 +119,5 @@ void Dino::Update()
 	{
 		Position.y = GroundHeight;
 	}
+	VerticalPos = Position.y;
 }

@@ -37,6 +37,7 @@ public:
 	void StopDucking();
 	float GetHeight();
 	Vector2 GetPosition();
+	Vector2 GetSize();
 	void Draw();
 	void Update();
 };
