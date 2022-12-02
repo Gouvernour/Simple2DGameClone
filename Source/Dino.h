@@ -7,12 +7,12 @@ private:
 	//Private Variables
 	float JumpHeight = 50;
 	float GroundHeight = 0.0f;
-	float JumpSpeed = 4.0f;
+	float JumpSpeed = 8.0f;
 	bool IsJumping = false;
 	bool IsGrounded = true;
 	bool IsDucking = false;
 	bool IsFalling = false;
-	Vector2 Size = Vector2(20, 40);
+	Vector2 Size = Vector2(40, 80);
 
 	Texture2D* Run1;
 	Texture2D* Run2;
