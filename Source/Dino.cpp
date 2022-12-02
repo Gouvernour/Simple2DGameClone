@@ -1,9 +1,25 @@
 #include "Dino.h"
 
+void Dino::Animate()
+{
+	if (IsGrounded && IsDucking)
+	{
+
+	}
+	else if (IsGrounded)
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
 Dino::Dino(float ScreenWidth, float ScreenHeight)
 {
-	GroundHeight = ScreenHeight - 60;
-	JumpHeight = ScreenHeight / 1.4;
+	GroundHeight = ScreenHeight - ScreenHeight/3;
+	JumpHeight = GroundHeight - ScreenHeight / 3 + Size.y;
 	VerticalPos = GroundHeight;
 	WindowHeight = ScreenHeight;
 	WindowWidth = ScreenWidth;
@@ -12,6 +28,7 @@ Dino::Dino(float ScreenWidth, float ScreenHeight)
 
 Dino::~Dino()
 {
+
 }
 
 void Dino::Jump()
@@ -62,10 +79,11 @@ void Dino::Draw()
 void Dino::Update()
 {
 	if (!IsDucking)
-		Size = Vector2(20, 40);
+		Size = Vector2(40, 80);
 	if (IsDucking)
 	{
-		Size = Vector2(40, 20);
+		if(IsGrounded)
+			Size = Vector2(80, 40);
 		if (Position.y < GroundHeight +20)
 		{
 			Position.y += JumpSpeed * 2;
