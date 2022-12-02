@@ -22,6 +22,7 @@
 ********************************************************************************************/
 
 #include "raylib.h"
+#include "Dino.h"
 
 //------------------------------------------------------------------------------------
 // Program main entry point
@@ -37,7 +38,7 @@ int main(void)
 
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
-
+    Dino* Player = new Dino(screenWidth, screenHeight);
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
@@ -45,7 +46,14 @@ int main(void)
         //----------------------------------------------------------------------------------
         // TODO: Update your variables here
         //----------------------------------------------------------------------------------
-
+        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
+            Player->Jump();
+        if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
+            Player->Duck();
+        else
+            Player->StopDucking();
+        
+        Player->Update();
         // Draw
         //----------------------------------------------------------------------------------
         BeginDrawing();
@@ -53,13 +61,14 @@ int main(void)
         ClearBackground(SKYBLUE);
 
         ClearBackground(LIGHTGRAY);
+        Player->Draw();
 
         DrawText("Congrats! You created your first window!", 190, 200, 20, SKYBLUE);
 
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
-
+    delete Player;
     // De-Initialization
     //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context
