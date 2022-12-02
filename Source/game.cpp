@@ -1,5 +1,7 @@
 #include "game.h"
 
+static bool gameOver = false;
+
 game::game(int screenwidth, int screenheight)
 {
 	ScreenWidth = screenwidth;
@@ -15,13 +17,41 @@ game::~game()
 
 void game::Update()
 {
-    if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
-        player->Jump();
-    if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
-        player->Duck();
-    else
-        player->StopDucking();
-    player->Update();
+    if (!gameOver) {
+        //-----------------------------------------------------------------------
+        // Movement
+         //-----------------------------------------------------------------------
+        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
+            player->Jump();
+        if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
+            player->Duck();
+        else
+            player->StopDucking();
+        player->Update();
+
+        //-----------------------------------------------------------------------
+        //Implement obstacles
+        //-----------------------------------------------------------------------
+
+        //-----------------------------------------------------------------------
+        //Collision
+        //-----------------------------------------------------------------------
+
+    //    for (int i = 0; i < tube_amount; i++)
+    //    {
+   //         if (CheckCollisionRecs(dino.rec, obs[i].rec))
+   //         {
+    //            gameOver = true;
+     //       } 
+    //        else if ((obs[i].rec.x < dino.position.x) && obs[i].active && !gameOver) {
+    //       obs[i].active = false;
+    //    }
+    }
+    else {
+        if (IsKeyPressed(KEY_ENTER)) {
+            gameOver = false;
+        }
+    }
 }
 
 void game::Draw()
