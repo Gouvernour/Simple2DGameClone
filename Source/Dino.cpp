@@ -12,6 +12,7 @@ Dino::Dino(float ScreenWidth, float ScreenHeight)
 
 Dino::~Dino()
 {
+
 }
 
 void Dino::Jump()
