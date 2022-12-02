@@ -14,13 +14,13 @@ private:
 	bool IsFalling = false;
 	Vector2 Size = Vector2(40, 80);
 
-	Texture2D* Run1;
-	Texture2D* Run2;
-	Texture2D* RunTextures[2] = {Run1, Run2};
-
-	Texture2D* Duck1;
-	Texture2D* Duck2;
-	Texture2D* DuckTextures[2] = {Duck1, Duck2};
+	//Texture2D* Run1;
+	//Texture2D* Run2;
+	//Texture2D* RunTextures[2] = {Run1, Run2};
+	//
+	//Texture2D* Duck1;
+	//Texture2D* Duck2;
+	//Texture2D* DuckTextures[2] = {Duck1, Duck2};
 
 	//Screen Variables
 	float WindowHeight;
@@ -33,7 +33,7 @@ public:
 
 private:
 	//Private Functions
-
+	void Animate();
 public:
 	//Public Functions
 	Dino(float ScreenWidth, float ScreenHeight);
