@@ -24,11 +24,18 @@ Dino::Dino(float ScreenWidth, float ScreenHeight)
 	WindowHeight = ScreenHeight;
 	WindowWidth = ScreenWidth;
 	Position = Vector2(40, GroundHeight);
+	Duck1 = LoadTexture("./Images/DinoDuck1.png");
+	Duck2 = LoadTexture("./Images/DinoDuck2.png");
+	Run1 = LoadTexture("./Images/DinoIdle.png");
+	Run2 = LoadTexture("./Images/DinoRun2.png");
 }
 
 Dino::~Dino()
 {
-
+	UnloadTexture(Run1);
+	UnloadTexture(Run2);
+	UnloadTexture(Duck1);
+	UnloadTexture(Duck2);
 }
 
 void Dino::Jump()
@@ -73,7 +80,29 @@ Vector2 Dino::GetSize()
 
 void Dino::Draw()
 {
-	DrawRectangleV(Position, Size, RED);
+	AnimationCalled++;
+	if (AnimationCalled >= AnimationFrequency)
+	{
+		FirstImage = !FirstImage;
+		AnimationCalled = 0;
+	}
+	//DrawRectangleV(Position, Size, RED);
+	if (IsDucking && IsGrounded)
+	{
+		if (FirstImage)
+			DrawTexture(Duck1, Position.x, Position.y, WHITE);
+		else
+			DrawTexture(Duck2, Position.x, Position.y, WHITE);
+
+	}
+	else
+	{
+		if(FirstImage)
+			DrawTexture(Run1, Position.x, Position.y, WHITE);
+		else
+			DrawTexture(Run2, Position.x, Position.y, WHITE);
+	}
+
 }
 
 void Dino::Update()
@@ -83,16 +112,16 @@ void Dino::Update()
 	if (IsDucking)
 	{
 		if(IsGrounded)
-			Size = Vector2(80, 40);
-		if (Position.y < GroundHeight +20)
+			Position.y = GroundHeight + 40;
+		if (Position.y < GroundHeight + 40)
 		{
 			Position.y += JumpSpeed * 2;
 		}
-		else if (Position.y >= GroundHeight + 20)
+		else if (Position.y >= GroundHeight + 40)
 		{
 			IsGrounded = true;
 			IsFalling = false;
-			Position.y = GroundHeight + 20;
+			Position.y = GroundHeight + 40;
 		}
 	}
 	else if(IsFalling)
