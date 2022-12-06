@@ -7,6 +7,8 @@ game::game(int screenwidth, int screenheight)
 	ScreenWidth = screenwidth;
 	ScreenHeight = screenheight;
 	player = new Dino(screenwidth, screenheight);
+    obs = new Obstacle(screenwidth, screenheight);
+    obs->Spawn();
 }
 
 game::~game()
@@ -32,6 +34,10 @@ void game::Update()
         //-----------------------------------------------------------------------
         //Implement obstacles
         //-----------------------------------------------------------------------
+
+        //update obstacle
+        obs->Update();
+        //when obstacle goes off screen and is deleted, spawn a new one
 
         //-----------------------------------------------------------------------
         //Collision

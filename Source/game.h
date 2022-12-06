@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Dino.h"
+#include "Obstacle.h"
 #include <raylib.h>
 
 class game {
@@ -9,6 +10,7 @@ private:
 	Dino* player;
 	int ScreenWidth;
 	int ScreenHeight;
+	Obstacle* obs;
 public:
 	//Public variables
 
