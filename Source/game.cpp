@@ -43,15 +43,11 @@ void game::Update()
         //Collision
         //-----------------------------------------------------------------------
 
-    //    for (int i = 0; i < tube_amount; i++)
-    //    {
-   //         if (CheckCollisionRecs(dino.rec, obs[i].rec))
-   //         {
-    //            gameOver = true;
-     //       } 
-    //        else if ((obs[i].rec.x < dino.position.x) && obs[i].active && !gameOver) {
-    //       obs[i].active = false;
-    //    }
+ 
+        if (CheckCollisionRecs(player->rec, obs->rec))
+        {
+            gameOver = true;
+        } 
     }
     else {
         if (IsKeyPressed(KEY_ENTER)) {

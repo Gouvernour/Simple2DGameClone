@@ -30,6 +30,7 @@ private:
 
 public:
 	//Public Variables
+	Rectangle rec;
 	Vector2 Position = Vector2(40, 200);
 	float VerticalPos = 200;
 
