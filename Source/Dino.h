@@ -20,7 +20,7 @@ private:
 	//
 	Texture2D Duck1;
 	Texture2D Duck2;
-	bool FirstImage;
+	bool FirstImage = true;
 	int AnimationFrequency = 6;
 	int AnimationCalled = 0;
 

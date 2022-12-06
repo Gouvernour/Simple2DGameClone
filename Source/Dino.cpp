@@ -28,6 +28,7 @@ Dino::Dino(float ScreenWidth, float ScreenHeight)
 	Duck2 = LoadTexture("./Images/DinoDuck2.png");
 	Run1 = LoadTexture("./Images/DinoIdle.png");
 	Run2 = LoadTexture("./Images/DinoRun2.png");
+	FirstImage = true;
 }
 
 Dino::~Dino()
@@ -75,6 +76,13 @@ Vector2 Dino::GetPosition()
 
 Vector2 Dino::GetSize()
 {
+	if (IsGrounded && IsDucking)
+	{
+		Size = Vector2(140, 40);
+	}
+	else {
+		Size = Vector2(60, 80);
+	}
 	return Size;
 }
 
@@ -86,8 +94,12 @@ void Dino::Draw()
 		FirstImage = !FirstImage;
 		AnimationCalled = 0;
 	}
-	//DrawRectangleV(Position, Size, RED);
-	if (IsDucking && IsGrounded)
+
+	if (!IsGrounded)
+	{
+		DrawTexture(Duck1, Position.x, Position.y, WHITE);
+	}
+	else if (IsDucking && IsGrounded)
 	{
 		if (FirstImage)
 			DrawTexture(Duck1, Position.x, Position.y, WHITE);
