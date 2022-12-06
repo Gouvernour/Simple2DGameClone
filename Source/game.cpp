@@ -47,6 +47,7 @@ void game::Update()
         if (CheckCollisionRecs(player->rec, obs->rec))
         {
             gameOver = true;
+            obs->Spawn();
         } 
     }
     else {
@@ -58,8 +59,13 @@ void game::Update()
 
 void game::Draw()
 {
+    if (!gameOver) {
     player->Draw();
     obs->Draw();
+    }
+    else {
+        DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
+    }
 }
 
 void game::Score()

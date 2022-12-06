@@ -29,7 +29,6 @@ Dino::Dino(float ScreenWidth, float ScreenHeight)
 	Run1 = LoadTexture("./Images/DinoIdle.png");
 	Run2 = LoadTexture("./Images/DinoRun2.png");
 	FirstImage = true;
-	Rectangle rec;
 	rec.x = GetPosition().x;
 	rec.y = GetPosition().y;
 	rec.width = GetSize().x;
@@ -124,15 +123,15 @@ void Dino::Draw()
 
 void Dino::Update()
 {
-	rec.y = VerticalPos;
+	rec.y = GetPosition().y;
+	rec.width = GetSize().x;
+	rec.height = GetSize().y;
 	if (!IsDucking)
 		Size = Vector2(40, 80);
 	if (IsDucking)
 	{
 		if (IsGrounded) {
 			Position.y = GroundHeight + 40;
-			rec.width = 80;
-			rec.height = 40;
 		}
 		if (Position.y < GroundHeight + 40)
 		{
