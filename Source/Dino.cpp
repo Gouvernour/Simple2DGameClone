@@ -76,7 +76,7 @@ float Dino::GetHeight()
 
 Vector2 Dino::GetPosition()
 {
-	return Vector2();
+	return Position;
 }
 
 Vector2 Dino::GetSize()
@@ -102,7 +102,7 @@ void Dino::Draw()
 
 	if (!IsGrounded)
 	{
-		DrawTexture(Duck1, Position.x, Position.y, WHITE);
+		DrawTexture(Run1, Position.x, Position.y, WHITE);
 	}
 	else if (IsDucking && IsGrounded)
 	{
