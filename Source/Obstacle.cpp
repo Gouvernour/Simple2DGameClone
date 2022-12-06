@@ -37,7 +37,7 @@ void Obstacle::Spawn() {
 		break;
 	}
 	rec.y = posY;
-	posX += GetRandomValue(1, 150);
+	posX = GetScreenWidth() + GetRandomValue(1, 150);
 	rec.x = posX;
 	rec.width = 60;
 	rec.height = 80;
@@ -50,4 +50,8 @@ void Obstacle::Update() {
 	if (posX < 0) {
 		Spawn();
 	}
+}
+
+void Obstacle::Draw() {
+	DrawRectangle(rec.x, rec.y, rec.width, rec.height, RED);
 }

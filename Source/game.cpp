@@ -63,6 +63,7 @@ void game::Update()
 void game::Draw()
 {
     player->Draw();
+    obs->Draw();
 }
 
 void game::Score()

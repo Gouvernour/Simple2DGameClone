@@ -28,4 +28,5 @@ public:
 	Obstacle(float ScreenWidth, float ScreenHeight);
 	void Spawn();
 	void Update();
+	void Draw();
 };
