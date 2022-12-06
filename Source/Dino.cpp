@@ -71,7 +71,7 @@ float Dino::GetHeight()
 
 Vector2 Dino::GetPosition()
 {
-	return Vector2();
+	return Position;
 }
 
 Vector2 Dino::GetSize()
