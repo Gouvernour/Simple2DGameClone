@@ -6,7 +6,11 @@ class Obstacle {
 private:
 	int speed = 10;
 	//Private Variables
-
+	Texture2D birdWingUp;
+	Texture2D birdWingDown;
+	Texture2D oneCactus;
+	Texture2D twoCactus;
+	Texture2D threeCactus;
 	//Screen Variables
 
 public:
