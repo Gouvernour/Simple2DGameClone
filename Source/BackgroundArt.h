@@ -16,9 +16,12 @@ class BackgroundArt {
 
 	vector<Texture2D> Grounds;
 	vector<Texture2D> Backgrounds;
+	float ScreenWidth;
+	float ScreenHeight;
+	float Groundheight;
 
 public:
-	BackgroundArt();
+	BackgroundArt(float screenWidth, float screenHeight, float groundheight);
 	~BackgroundArt();
 
 	void Draw(bool isNight);

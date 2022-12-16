@@ -1,17 +1,17 @@
 #include "BackgroundArt.h"
 
-BackgroundArt::BackgroundArt(float screenWidth, float screenHeight)
+BackgroundArt::BackgroundArt(float screenWidth, float screenHeight, float groundheight)
 {
 	ScreenHeight = screenHeight;
 	ScreenWidth = screenWidth;
-	Bump = LoadTexture("./Images/DinoDuck1.png");
-	Dip = LoadTexture("./Images/DinoDuck2.png");
-	Road = LoadTexture("./Images/DinoIdle.png");
-	Cloud1 = LoadTexture("./Images/DinoRun2.png");
-	Cloud2 = LoadTexture("./Images/DinoRun2.png");
-	Star = LoadTexture("./Images/DinoRun2.png");
-	Moon = LoadTexture("./Images/DinoRun2.png");
-	Sun = LoadTexture("./Images/DinoRun2.png");
+	Bump = LoadTexture("./Images/Bump.png");
+	Dip = LoadTexture("./Images/Dip.png");
+	Road = LoadTexture("./Images/Road.png");
+	Cloud1 = LoadTexture("./Images/Cloud1.png");
+	Cloud2 = LoadTexture("./Images/Cloud2.png");
+	Star = LoadTexture("./Images/Star.png");
+	Moon = LoadTexture("./Images/Moon.png");
+	Sun = LoadTexture("./Images/Sun.png");
 
 	Grounds.push_back(Road);
 	Grounds.push_back(Dip);

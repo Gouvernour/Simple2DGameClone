@@ -6,7 +6,6 @@ class Dino {
 private:
 	//Private Variables
 	float JumpHeight = 50;
-	float GroundHeight = 0.0f;
 	float JumpSpeed = 8.0f;
 	bool IsJumping = false;
 	bool IsGrounded = true;
@@ -29,6 +28,7 @@ private:
 	float WindowWidth;
 
 public:
+	float GroundHeight = 0.0f;
 	//Public Variables
 	Rectangle rec;
 	Vector2 Position = Vector2(40, 200);

@@ -41,7 +41,7 @@
     <ClInclude Include="Source\Obstacle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BackgroundArt.h">
+    <ClInclude Include="Source\BackgroundArt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
