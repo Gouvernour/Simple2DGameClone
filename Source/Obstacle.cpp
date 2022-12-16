@@ -41,7 +41,7 @@ void Obstacle::Spawn() {
 		break;
 	case 4:
 		obs = oneCactus;
-		posY = GetScreenHeight() - (GetScreenHeight() / 3);
+		posY = GetScreenHeight() - (GetScreenHeight() / 3) + 20;
 		rec.width = 32;
 		rec.height = 65;
 		break;

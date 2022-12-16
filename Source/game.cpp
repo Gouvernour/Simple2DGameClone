@@ -26,6 +26,10 @@ game::~game()
 {
     delete player;
     player = nullptr;
+    UnloadSound(jumpSound);
+    UnloadSound(hitSound);
+    UnloadSound(scoreSound);
+    CloseAudioDevice();
 }
 
 void game::Update()
