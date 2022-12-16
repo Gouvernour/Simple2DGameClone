@@ -59,7 +59,6 @@ int main(void)
         ClearBackground(LIGHTGRAY);
         
 
-        //DrawText("Congrats! You created your first window!", 190, 200, 20, SKYBLUE);
 
         Game->Draw();
 
@@ -69,6 +68,7 @@ int main(void)
     
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    CloseAudioDevice();
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 

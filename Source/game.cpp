@@ -1,17 +1,25 @@
 #include "game.h"
 
+
 static bool gameOver = false;
 static int score = 0;
 static int hiScore = 0;
+Sound hitSound; 
+Sound jumpSound; 
+Sound scoreSound;
+
 
 game::game(int screenwidth, int screenheight)
 {
+    InitAudioDevice();
 	ScreenWidth = screenwidth;
 	ScreenHeight = screenheight;
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
-    score = 0;  
+    hitSound= LoadSound("./Sounds/hit.wav");
+    jumpSound = LoadSound("./Sounds/jump.wav");
+    scoreSound = LoadSound("./Sounds/score.wav");
 }
 
 game::~game()
@@ -35,8 +43,11 @@ void game::Update()
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
-        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
+        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
+            SetSoundVolume(jumpSound, 2.f);
             player->Jump();
+            PlaySound(jumpSound);
+        }
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
             player->Duck();
         else
@@ -54,10 +65,10 @@ void game::Update()
         //-----------------------------------------------------------------------
         //Collision
         //-----------------------------------------------------------------------
-
- 
         if (CheckCollisionRecs(player->rec, obs->rec))
         {
+            SetSoundVolume(hitSound, 2.f);
+            PlaySound(hitSound);
             gameOver = true;
             obs->Spawn();
             score = 0;
@@ -81,8 +92,4 @@ void game::Draw()
     else {
         DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
     }
-}
-
-void game::Score()
-{
 }

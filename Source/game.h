@@ -13,7 +13,6 @@ private:
 	Obstacle* obs;
 public:
 	//Public variables
-
 private:
 	//Private functions
 
@@ -24,6 +23,4 @@ public:
 
 	void Update();
 	void Draw();
-	void Score();
-
 };
