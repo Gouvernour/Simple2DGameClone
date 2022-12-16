@@ -159,12 +159,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BackgroundArt.cpp" />
     <ClCompile Include="Source\Dino.cpp" />
     <ClCompile Include="Source\game.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Obstacle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackgroundArt.h" />
     <ClInclude Include="Source\Dino.h" />
     <ClInclude Include="Source\game.h" />
     <ClInclude Include="Source\Obstacle.h" />

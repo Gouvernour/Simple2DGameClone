@@ -1,20 +1,6 @@
 #include "Dino.h"
 
-void Dino::Animate()
-{
-	if (IsGrounded && IsDucking)
-	{
 
-	}
-	else if (IsGrounded)
-	{
-
-	}
-	else
-	{
-
-	}
-}
 
 Dino::Dino(float ScreenWidth, float ScreenHeight)
 {

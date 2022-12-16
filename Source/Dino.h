@@ -36,7 +36,6 @@ public:
 
 private:
 	//Private Functions
-	void Animate();
 public:
 	//Public Functions
 	Dino(float ScreenWidth, float ScreenHeight);

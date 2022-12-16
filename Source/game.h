@@ -2,6 +2,7 @@
 
 #include "Dino.h"
 #include "Obstacle.h"
+#include "BackgroundArt.h"
 #include <raylib.h>
 
 class game {
