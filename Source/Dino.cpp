@@ -29,18 +29,21 @@ Dino::~Dino()
 	UnloadTexture(Duck2);
 }
 
-void Dino::Jump()
+bool Dino::Jump()
 {
 	//Avoid Double Jump
-	if (!IsGrounded) return;
+	if (!IsGrounded) 
+		return false;
 
 
 	//Prevent Jumping while ducking or still falling from previous jump
-	else if (IsFalling || IsDucking) return;
+	else if (IsFalling || IsDucking) return false;
 
 	//Enable Jumping
 	IsJumping = true;
 	IsGrounded = false;
+
+	return true;
 }
 
 void Dino::Duck()
@@ -149,7 +152,7 @@ void Dino::Update()
 		{
 			Position.y -= JumpSpeed;
 		}
-		else if (Position.y <= JumpHeight)
+		else if (Position.y < JumpHeight)
 		{
 			IsJumping = false;
 			IsFalling = true;
@@ -171,13 +174,14 @@ void Dino::Update()
 	else
 	{
 		Position.y = GroundHeight;
+		IsGrounded = true;
 	}
 	VerticalPos = Position.y;
 }
 
 bool Dino::canJump()
 {
-	if (IsGrounded && !IsDucking)
+	if (!IsJumping)
 		return true;
 	return false;
 }

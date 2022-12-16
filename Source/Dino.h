@@ -42,7 +42,7 @@ public:
 	~Dino();
 
 
-	void Jump();
+	bool Jump();
 	void Duck();
 	void StopDucking();
 	float GetHeight();
