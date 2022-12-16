@@ -38,7 +38,10 @@ void game::Update()
         if (score > hiScore) {
             hiScore = score;
         }
-
+        if (score % 100 == 0) {
+            SetSoundVolume(scoreSound, 1.f);
+            PlaySoundMulti(scoreSound);
+        }
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
@@ -47,8 +50,8 @@ void game::Update()
 
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
             SetSoundVolume(jumpSound, 1.f);
-            player->Jump();
             PlaySoundMulti(jumpSound);
+            player->Jump();
         }
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
             player->Duck();
@@ -97,8 +100,4 @@ void game::Draw()
     else {
         DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
     }
-}
-
-void game::Score()
-{
 }
