@@ -16,13 +16,21 @@ class BackgroundArt {
 
 	vector<Texture2D> Grounds;
 	vector<Texture2D> Backgrounds;
+	vector<Vector2> GroundLocations;
+	vector<int> DeleteIndexes;
+
+	float ScreenWidth;
+	float ScreenHeight;
+	float GroundHeight;
 
 public:
-	BackgroundArt();
+	BackgroundArt(float screenWidth, float screenHeight, float groundHeight);
 	~BackgroundArt();
 
+	void populateRoad();
+
 	void Draw(bool isNight);
-	void Update();
+	void Update(float runSpeed);
 	void AddRoadPiece();
 	void AddBackgroundPiece();
 };

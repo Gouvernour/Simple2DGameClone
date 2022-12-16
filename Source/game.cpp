@@ -15,7 +15,7 @@ game::game(int screenwidth, int screenheight)
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
-    //backgrounds = new BackgroundArt();
+    backgrounds = new BackgroundArt(screenwidth, screenheight, player->GroundHeight);
     score = 0;  
     jumpSound = LoadSound("./Sounds/jump.wav");
     hitSound = LoadSound("./Sounds/hit.wav");
@@ -69,6 +69,9 @@ void game::Update()
         //update obstacle
         obs->obsSpeed = 10 + (score / 125);
         obs->Update();
+
+        //Update background elements
+        backgrounds->Update(obs->obsSpeed);
         //when obstacle goes off screen and is deleted, spawn a new one
 
         //-----------------------------------------------------------------------
@@ -95,6 +98,7 @@ void game::Update()
 void game::Draw()
 {
     if (!gameOver) {
+        backgrounds->Draw(false);
     player->Draw();
     obs->Draw();
     DrawText(TextFormat("%04i", score), 20, 20, 40, GRAY);
