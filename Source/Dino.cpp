@@ -174,3 +174,10 @@ void Dino::Update()
 	}
 	VerticalPos = Position.y;
 }
+
+bool Dino::canJump()
+{
+	if (IsGrounded && !IsDucking)
+		return true;
+	return false;
+}

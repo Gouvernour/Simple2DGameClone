@@ -12,6 +12,7 @@ private:
 	int ScreenWidth;
 	int ScreenHeight;
 	Obstacle* obs;
+	BackgroundArt* backgrounds;
 public:
 	//Public variables
 

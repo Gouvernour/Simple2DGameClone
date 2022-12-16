@@ -50,4 +50,5 @@ public:
 	Vector2 GetSize();
 	void Draw();
 	void Update();
+	bool canJump();
 };
