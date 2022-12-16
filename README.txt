@@ -39,3 +39,24 @@ The BackgroundArt class draws and updates positions of both the road and clouds 
 The Road is instantiated with a buffer length exceeding the width of the screen and randomly decides between 3 sprites
 Clouds are instantiated as 3 clouds that moves slower than obstacles and road to show some distance variation
 When a cloud or roadpiece moves out of the screen on its left side a new piece is added and the old one is removed
+
+
+
+Otto Roberts Olšteins
+
+Made the obstacles (code and art)
+
+The obstacle is one object, initialized in the game class, which moves across the screen and is then moved back. 
+
+The obstacle's Spawn function randomly picks between the 6 possible obstacles
+(birds flying at 3 different heights, and 3 different types of cacti), gives the obstacle's hitbox rectangle the corresponding size and Y position, and
+moves the obstacle to the right side of the screen - this function is called once when the game begins, and then from the obstacle's Update method when
+it reaches the left side of the screen.
+
+The Update function moves the obstacle and its hitbox, and checks if it has reached the left side.
+
+The Draw function, in addition to drawing the obstacle's sprite, also handles animating the bird's wings (if the obstacle is a bird) by changing the sprite
+used every 10 frames (this value can be changed by changing the AnimationFrequency variable in obstacle.h)
+
+The speed of the obstacles ramps up over time - their speed is based on the score (which itself is just counting how many frames the player has been alive for)
+This is done directly in game.cpp, which is also where the score is managed.

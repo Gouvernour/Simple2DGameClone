@@ -26,6 +26,8 @@ game::~game()
 {
     delete player;
     player = nullptr;
+    delete obs;
+    obs = nullptr;
     UnloadSound(jumpSound);
     UnloadSound(hitSound);
     UnloadSound(scoreSound);

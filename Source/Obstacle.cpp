@@ -18,7 +18,6 @@ Obstacle::~Obstacle() {
 }
 
 void Obstacle::Spawn() {
-	//spawn an obstacle of the given type at the default posX (should be equal to screen width) and posY dependent on the obstacle type
 	switch (GetRandomValue(1, 6))
 	{
 	case 1:
