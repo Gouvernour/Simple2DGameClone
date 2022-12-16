@@ -48,6 +48,7 @@ void game::Update()
         //-----------------------------------------------------------------------
 
         //update obstacle
+        obs->obsSpeed = 10 + (score / 125);
         obs->Update();
         //when obstacle goes off screen and is deleted, spawn a new one
 
