@@ -39,11 +39,14 @@ void game::Update()
         if (score > hiScore) {
             hiScore = score;
         }
-
+        if (score % 100 == 0) {
+            SetSoundVolume(scoreSound, 1.f);
+            PlaySoundMulti(scoreSound);
+        }
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
-        
+   
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
             bool jumped = false;
             if (player->Jump())
@@ -100,8 +103,4 @@ void game::Draw()
     else {
         DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
     }
-}
-
-void game::Score()
-{
 }

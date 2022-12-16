@@ -37,6 +37,7 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
+
     SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
     game* Game = new game(screenWidth, screenHeight);
@@ -59,7 +60,6 @@ int main(void)
         ClearBackground(LIGHTGRAY);
         
 
-        //DrawText("Congrats! You created your first window!", 190, 200, 20, SKYBLUE);
 
         Game->Draw();
 
@@ -69,6 +69,7 @@ int main(void)
     
     // De-Initialization
     //--------------------------------------------------------------------------------------
+    CloseAudioDevice();
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
