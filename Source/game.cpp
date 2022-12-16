@@ -45,9 +45,7 @@ void game::Update()
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
-        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
-            player->Jump();
-
+   
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
             SetSoundVolume(jumpSound, 1.f);
             PlaySoundMulti(jumpSound);
