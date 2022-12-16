@@ -3,15 +3,22 @@
 static bool gameOver = false;
 static int score = 0;
 static int hiScore = 0;
+Sound hitSound;
+Sound jumpSound;
+Sound scoreSound;
 
 game::game(int screenwidth, int screenheight)
 {
+    InitAudioDevice();
 	ScreenWidth = screenwidth;
 	ScreenHeight = screenheight;
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
     score = 0;  
+    jumpSound = LoadSound("./Sounds/jump.wav");
+    hitSound = LoadSound("./Sounds/hit.wav");
+    scoreSound = LoadSound("./Sounds/score.wav");
 }
 
 game::~game()
@@ -35,16 +42,14 @@ void game::Update()
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
-<<<<<<< Updated upstream
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
             player->Jump();
-=======
+
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
             SetSoundVolume(jumpSound, 1.f);
             player->Jump();
             PlaySoundMulti(jumpSound);
         }
->>>>>>> Stashed changes
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
             player->Duck();
         else
@@ -67,11 +72,8 @@ void game::Update()
  
         if (CheckCollisionRecs(player->rec, obs->rec))
         {
-<<<<<<< Updated upstream
-=======
             SetSoundVolume(hitSound, 1.f);
             PlaySoundMulti(hitSound);
->>>>>>> Stashed changes
             gameOver = true;
             obs->Spawn();
             score = 0;
