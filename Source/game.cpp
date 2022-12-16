@@ -1,6 +1,8 @@
 #include "game.h"
 
 static bool gameOver = false;
+static int score = 0;
+static int hiScore = 0;
 
 game::game(int screenwidth, int screenheight)
 {
@@ -9,6 +11,7 @@ game::game(int screenwidth, int screenheight)
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
+    score = 0;  
 }
 
 game::~game()
@@ -20,9 +23,18 @@ game::~game()
 void game::Update()
 {
     if (!gameOver) {
+
+        //-----------------------------------------------------------------------
+        // Score
+        //-----------------------------------------------------------------------
+        score++;
+        if (score > hiScore) {
+            hiScore = score;
+        }
+
         //-----------------------------------------------------------------------
         // Movement
-         //-----------------------------------------------------------------------
+        //-----------------------------------------------------------------------
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
             player->Jump();
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
@@ -48,6 +60,7 @@ void game::Update()
         {
             gameOver = true;
             obs->Spawn();
+            score = 0;
         } 
     }
     else {
@@ -62,6 +75,8 @@ void game::Draw()
     if (!gameOver) {
     player->Draw();
     obs->Draw();
+    DrawText(TextFormat("%04i", score), 20, 20, 40, GRAY);
+    DrawText(TextFormat("HI-SCORE: %04i", hiScore), 20, 70, 20, DARKGRAY);
     }
     else {
         DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
