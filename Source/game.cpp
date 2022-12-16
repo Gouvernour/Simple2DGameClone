@@ -15,7 +15,7 @@ game::game(int screenwidth, int screenheight)
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
-    //backgrounds = new BackgroundArt();
+    backgrounds = new BackgroundArt(screenwidth, screenheight, player->GroundHeight);
     score = 0;  
     jumpSound = LoadSound("./Sounds/jump.wav");
     hitSound = LoadSound("./Sounds/hit.wav");

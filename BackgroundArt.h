@@ -19,9 +19,10 @@ class BackgroundArt {
 
 	float ScreenWidth;
 	float ScreenHeight;
+	float GroundHeight;
 
 public:
-	BackgroundArt(float ScreenWidth, float ScreenHeight);
+	BackgroundArt(float ScreenWidth, float ScreenHeight, float groundHeight);
 	~BackgroundArt();
 
 	void Draw(bool isNight);

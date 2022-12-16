@@ -1,9 +1,10 @@
 #include "BackgroundArt.h"
 
-BackgroundArt::BackgroundArt(float screenWidth, float screenHeight)
+BackgroundArt::BackgroundArt(float screenWidth, float screenHeight, float groundHeight)
 {
 	ScreenHeight = screenHeight;
 	ScreenWidth = screenWidth;
+	GroundHeight = groundHeight;
 	Bump = LoadTexture("./Images/DinoDuck1.png");
 	Dip = LoadTexture("./Images/DinoDuck2.png");
 	Road = LoadTexture("./Images/DinoIdle.png");
@@ -26,7 +27,7 @@ void BackgroundArt::Draw(bool isNight)
 {
 	for (int i = 0; i < Grounds.size(); i++)
 	{
-		DrawTexture(Grounds[i], i * 20, 200, WHITE);
+		DrawTexture(Grounds[i], i * 20, GroundHeight, WHITE);
 	}
 }
 
