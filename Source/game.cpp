@@ -1,13 +1,11 @@
 #include "game.h"
 
-
 static bool gameOver = false;
 static int score = 0;
 static int hiScore = 0;
-Sound hitSound; 
-Sound jumpSound; 
+Sound hitSound;
+Sound jumpSound;
 Sound scoreSound;
-
 
 game::game(int screenwidth, int screenheight)
 {
@@ -17,8 +15,9 @@ game::game(int screenwidth, int screenheight)
 	player = new Dino(screenwidth, screenheight);
     obs = new Obstacle(screenwidth, screenheight);
     obs->Spawn();
-    hitSound= LoadSound("./Sounds/hit.wav");
+    score = 0;  
     jumpSound = LoadSound("./Sounds/jump.wav");
+    hitSound = LoadSound("./Sounds/hit.wav");
     scoreSound = LoadSound("./Sounds/score.wav");
 }
 
@@ -43,12 +42,13 @@ void game::Update()
         //-----------------------------------------------------------------------
         // Movement
         //-----------------------------------------------------------------------
+        if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP))
+            player->Jump();
+
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
             SetSoundVolume(jumpSound, 1.f);
             player->Jump();
-            if (player->GetHeight() = ) {
             PlaySoundMulti(jumpSound);
-            }
         }
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
             player->Duck();
@@ -61,12 +61,15 @@ void game::Update()
         //-----------------------------------------------------------------------
 
         //update obstacle
+        obs->obsSpeed = 10 + (score / 125);
         obs->Update();
         //when obstacle goes off screen and is deleted, spawn a new one
 
         //-----------------------------------------------------------------------
         //Collision
         //-----------------------------------------------------------------------
+
+ 
         if (CheckCollisionRecs(player->rec, obs->rec))
         {
             SetSoundVolume(hitSound, 1.f);
@@ -94,4 +97,8 @@ void game::Draw()
     else {
         DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth()/2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20)/2, GetScreenHeight()/2 - 50, 20, GRAY);
     }
+}
+
+void game::Score()
+{
 }

@@ -23,19 +23,19 @@ void Obstacle::Spawn() {
 	{
 	case 1:
 		obs = bird;
-		posY = GetScreenHeight() - (GetScreenHeight() / 3);
+		posY = GetScreenHeight() - (GetScreenHeight() / 3) + 10;
 		rec.width = 40;
 		rec.height = 40;
 		break;
 	case 2:
 		obs = bird;
-		posY = (GetScreenHeight() - (GetScreenHeight() / 3)) - 50;
+		posY = (GetScreenHeight() - (GetScreenHeight() / 3)) - 30;
 		rec.width = 40;
 		rec.height = 40;
 		break;
 	case 3:
 		obs = bird;
-		posY = (GetScreenHeight() - (GetScreenHeight() / 3)) - 110;
+		posY = (GetScreenHeight() - (GetScreenHeight() / 3)) - 90;
 		rec.width = 40;
 		rec.height = 40;
 		break;
@@ -67,7 +67,7 @@ void Obstacle::Spawn() {
 
 void Obstacle::Update() {
 	//update
-	posX -= speed;
+	posX -= obsSpeed;
 	rec.x = posX;
 	if (posX < 0) {
 		Spawn();
@@ -75,8 +75,6 @@ void Obstacle::Update() {
 }
 
 void Obstacle::Draw() {
-
-	//DrawRectangle(rec.x, rec.y, rec.width, rec.height,GREEN);
 
 	if (obs == bird) {
 		AnimationCalled++;
