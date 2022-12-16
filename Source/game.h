@@ -2,8 +2,8 @@
 
 #include "Dino.h"
 #include "Obstacle.h"
-#include "BackgroundArt.h"
 #include <raylib.h>
+#include "BackgroundArt.h"
 
 class game {
 private:
