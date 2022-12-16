@@ -2,6 +2,7 @@
 
 BackgroundArt::BackgroundArt(float screenWidth, float screenHeight, float groundHeight)
 {
+	//Set Variables and load textures
 	ScreenWidth = screenWidth;
 	ScreenHeight = screenHeight;
 	Bump = LoadTexture("./Images/Bump.png");
@@ -17,11 +18,16 @@ BackgroundArt::BackgroundArt(float screenWidth, float screenHeight, float ground
 
 BackgroundArt::~BackgroundArt()
 {
+	//Unload all memory that has been allocated
 	UnloadTexture(Bump);
 	UnloadTexture(Dip);
 	UnloadTexture(Road);
 	UnloadTexture(Cloud1);
 	UnloadTexture(Cloud2);
+	Clouds.clear();
+	Grounds.clear();
+	CloudLocations.clear();
+	GroundLocations.clear();
 }
 
 void BackgroundArt::populateRoad()
@@ -57,6 +63,7 @@ void BackgroundArt::populateRoad()
 
 void BackgroundArt::populateBackgrounds()
 {
+	//Add Clouds to the screen
 	AddCloud();
 	CloudLocations[0].x = 80;
 	AddCloud();
@@ -67,6 +74,7 @@ void BackgroundArt::populateBackgrounds()
 
 void BackgroundArt::Draw(bool isNight)
 {
+	//Draw the road and clouds where they are located
 	for (int i = 0; i < Grounds.size(); i++)
 	{
 		DrawTexture(Grounds[i], GroundLocations[i].x, GroundLocations[i].y, WHITE);
@@ -79,6 +87,7 @@ void BackgroundArt::Draw(bool isNight)
 
 void BackgroundArt::Update(float runSpeed)
 {
+	//Update location of all roadpieces and clouds and delete out of bounds objects, and add a new one to replace the destroyed one
 	for (int i = 0; i < Grounds.size(); i++)
 	{
 		GroundLocations[i].x -= runSpeed;
@@ -103,12 +112,14 @@ void BackgroundArt::Update(float runSpeed)
 			CloudLocations.erase(CloudLocations.begin() + i);
 		}
 	}
+	//Check to make sure there is not too many clouds on screen
 	if (Clouds.size() < 3)
 		AddCloud();
 }
 
 void BackgroundArt::AddRoadPiece()
 {
+	//Randomly Chooses a ground piece weighted towards regular roads
 	while (GroundLocations.back().x < ScreenWidth * 2)
 	{
 		switch (GetRandomValue(1, 20))
@@ -133,6 +144,7 @@ void BackgroundArt::AddRoadPiece()
 
 void BackgroundArt::AddCloud()
 {
+	//Randomly create different cloud and a random location for clouds weighted towards cloud2 and cloud1 have a larger difference in location for occasional greater distance between clouds
 	switch (GetRandomValue(1,4))
 	{
 	case 1:

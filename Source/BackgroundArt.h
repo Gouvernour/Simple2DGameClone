@@ -24,16 +24,16 @@ class BackgroundArt {
 	float ScreenHeight;
 	float GroundHeight;
 	Vector2 SunLocation;
+	void populateRoad();
+	void populateBackgrounds();
+	void AddRoadPiece();
+	void AddCloud();
 
 public:
 	BackgroundArt(float screenWidth, float screenHeight, float groundHeight);
 	~BackgroundArt();
 
-	void populateRoad();
-	void populateBackgrounds();
 
 	void Draw(bool isNight);
 	void Update(float runSpeed);
-	void AddRoadPiece();
-	void AddCloud();
 };

@@ -48,27 +48,32 @@ bool Dino::Jump()
 
 void Dino::Duck()
 {
+	//Sets Booleans to represent the player is ducking
 	IsDucking = true;
 	IsJumping = false;
 }
 
 void Dino::StopDucking()
 {
+	//Sets the player state to not duck anymore
 	IsDucking = false;
 }
 
 float Dino::GetHeight()
 {
+	//Getter function for the players current vertical position
 	return VerticalPos;
 }
 
 Vector2 Dino::GetPosition()
 {
+	//Getter function for the exact position of Player
 	return Position;
 }
 
 Vector2 Dino::GetSize()
 {
+	//Returns the Size of the Player for collision detection
 	if (IsGrounded && IsDucking)
 	{
 		Size = Vector2(140, 40);
@@ -81,13 +86,18 @@ Vector2 Dino::GetSize()
 
 void Dino::Draw()
 {
+	//Draw an animated running
+
+	//Increment Times function has been called to update animation slower than framerate
 	AnimationCalled++;
 	if (AnimationCalled >= AnimationFrequency)
 	{
+		//When the Draw function has been called, switch sprite and reset counter
 		FirstImage = !FirstImage;
 		AnimationCalled = 0;
 	}
 
+	//Choose sprite depending on Jump, Duck or Run state and Animation state
 	if (!IsGrounded)
 	{
 		DrawTexture(Run1, Position.x, Position.y, WHITE);
@@ -112,13 +122,15 @@ void Dino::Draw()
 
 void Dino::Update()
 {
+	//update Positions and Collision area
 	rec.y = GetPosition().y;
 	rec.width = GetSize().x;
 	rec.height = GetSize().y;
-	if (!IsDucking)
+	if (!IsDucking)					//
 		Size = Vector2(40, 80);
 	if (IsDucking)
 	{
+		//Determine if player should fall faster or be grounded
 		if (IsGrounded) {
 			Position.y = GroundHeight + 40;
 		}
@@ -135,6 +147,7 @@ void Dino::Update()
 	}
 	else if(IsFalling)
 	{
+		//When player start falling decrease height position visually until hit ground
 		if (Position.y < GroundHeight)
 		{
 			Position.y += JumpSpeed;
@@ -146,6 +159,7 @@ void Dino::Update()
 			Position.y = GroundHeight;
 		}
 	}
+	//Start moving Player upwards while jumping
 	else if (IsJumping)
 	{
 		if (Position.y > JumpHeight)
@@ -173,15 +187,9 @@ void Dino::Update()
 	}
 	else
 	{
+		//Make sure the player is on groundlevel when in default state
 		Position.y = GroundHeight;
 		IsGrounded = true;
 	}
 	VerticalPos = Position.y;
-}
-
-bool Dino::canJump()
-{
-	if (!IsJumping)
-		return true;
-	return false;
 }
