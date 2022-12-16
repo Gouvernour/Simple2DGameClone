@@ -15,22 +15,25 @@ class BackgroundArt {
 	Texture2D Cloud2;
 
 	vector<Texture2D> Grounds;
-	vector<Texture2D> Backgrounds;
+	vector<Texture2D> Clouds;
 	vector<Vector2> GroundLocations;
+	vector<Vector2> CloudLocations;
 	vector<int> DeleteIndexes;
 
 	float ScreenWidth;
 	float ScreenHeight;
 	float GroundHeight;
+	Vector2 SunLocation;
 
 public:
 	BackgroundArt(float screenWidth, float screenHeight, float groundHeight);
 	~BackgroundArt();
 
 	void populateRoad();
+	void populateBackgrounds();
 
 	void Draw(bool isNight);
 	void Update(float runSpeed);
 	void AddRoadPiece();
-	void AddBackgroundPiece();
+	void AddCloud();
 };
