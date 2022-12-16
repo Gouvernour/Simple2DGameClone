@@ -67,7 +67,7 @@ void Obstacle::Spawn() {
 
 void Obstacle::Update() {
 	//update
-	posX -= speed;
+	posX -= obsSpeed;
 	rec.x = posX;
 	if (posX < 0) {
 		Spawn();
@@ -75,8 +75,6 @@ void Obstacle::Update() {
 }
 
 void Obstacle::Draw() {
-
-	DrawRectangle(rec.x, rec.y, rec.width, rec.height,GREEN);
 
 	if (obs == bird) {
 		AnimationCalled++;

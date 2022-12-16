@@ -4,7 +4,6 @@
 
 class Obstacle {
 private:
-	int speed = 10;
 	//Private Variables
 	Texture2D birdWingUp;
 	Texture2D birdWingDown;
@@ -19,6 +18,7 @@ private:
 public:
 	int posX = GetScreenWidth();
 	int posY = 0;
+	int obsSpeed = 10;
 	enum obsType
 	{
 		bird, oneCactus, twoCactus, threeCactus
