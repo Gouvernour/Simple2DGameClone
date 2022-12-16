@@ -44,9 +44,11 @@ void game::Update()
         // Movement
         //-----------------------------------------------------------------------
         if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_UP)) {
-            SetSoundVolume(jumpSound, 2.f);
+            SetSoundVolume(jumpSound, 1.f);
             player->Jump();
-            PlaySound(jumpSound);
+            if (player->GetHeight() = ) {
+            PlaySoundMulti(jumpSound);
+            }
         }
         if (IsKeyDown(KEY_DOWN) || IsKeyDown(KEY_S))
             player->Duck();
@@ -67,8 +69,8 @@ void game::Update()
         //-----------------------------------------------------------------------
         if (CheckCollisionRecs(player->rec, obs->rec))
         {
-            SetSoundVolume(hitSound, 2.f);
-            PlaySound(hitSound);
+            SetSoundVolume(hitSound, 1.f);
+            PlaySoundMulti(hitSound);
             gameOver = true;
             obs->Spawn();
             score = 0;
