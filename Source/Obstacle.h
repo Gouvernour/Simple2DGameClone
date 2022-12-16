@@ -6,7 +6,14 @@ class Obstacle {
 private:
 	int speed = 10;
 	//Private Variables
-
+	Texture2D birdWingUp;
+	Texture2D birdWingDown;
+	Texture2D cactusOne;
+	Texture2D cactusTwo;
+	Texture2D cactusThree;
+	bool wingUp = true;
+	int AnimationFrequency = 10;
+	int AnimationCalled = 0;
 	//Screen Variables
 
 public:
@@ -14,7 +21,7 @@ public:
 	int posY = 0;
 	enum obsType
 	{
-		lowBird, medBird, highBird, oneCactus, twoCactus, threeCactus
+		bird, oneCactus, twoCactus, threeCactus
 	};
 	obsType obs;
 	//Public Variables
@@ -26,6 +33,7 @@ private:
 public:
 	//Public Functions
 	Obstacle(float ScreenWidth, float ScreenHeight);
+	~Obstacle();
 	void Spawn();
 	void Update();
 	void Draw();
